@@ -1,4 +1,4 @@
-package de.marcusjanke.examples.spring.oauth2;
+package aws.cognito.examples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,14 +24,23 @@ public class ResourceServerApplication {
     }
 
     @GetMapping("/hello")
-    @PreAuthorize("hasAuthority('SCOPE_my-hello-resource/hello.read')")
+//    @PreAuthorize("hasAuthority('SCOPE_my-hello-resource/hello.read')")
+    @PreAuthorize("hasAuthority('SCOPE_products/read')")
     public String hello(Principal user) {
         return "Hello " + user.getName();
     }
 
     @GetMapping("/user-info")
-    @PreAuthorize("hasAuthority('SCOPE_my-hello-resource/user.read')")
+//    @PreAuthorize("hasAuthority('SCOPE_my-hello-resource/user.read')")
+    @PreAuthorize("hasAuthority('SCOPE_products/user.read')")
     public String userInfo(Principal user) {
         return "Confidential user data";
+    }
+
+    @GetMapping("/product-delete")
+//    @PreAuthorize("hasAuthority('SCOPE_my-hello-resource/user.read')")
+    @PreAuthorize("hasAuthority('SCOPE_products/delete')")
+    public String productDelete(Principal user) {
+        return "product delete" + user.getName();
     }
 }

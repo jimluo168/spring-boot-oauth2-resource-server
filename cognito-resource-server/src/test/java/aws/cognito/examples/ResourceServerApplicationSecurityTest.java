@@ -1,4 +1,4 @@
-package de.marcusjanke.examples.spring.oauth2;
+package aws.cognito.examples;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
